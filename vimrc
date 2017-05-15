@@ -190,6 +190,8 @@ syntax on
 
 " show line numbers
 set nu
+" show relative numbers
+set relativenumber
 
 " tab navigation mappings
 map tn :tabn<CR>
