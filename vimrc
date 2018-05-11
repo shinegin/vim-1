@@ -31,7 +31,7 @@ Plugin 'gmarik/vundle'
 " Plugins from github repos:
 
 " Python and PHP Debugger
-Plugin 'fisadev/vim-debug.vim'
+" Plugin 'fisadev/vim-debug.vim'
 " Better file browser
 Plugin 'scrooloose/nerdtree'
 " Code commenter
@@ -73,6 +73,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 " awesome colorscheme
 Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 " Git/mercurial/others diff icons on the side of the file lines
 Plugin 'mhinz/vim-signify'
 " Automatically sort python imports
@@ -520,7 +521,7 @@ let g:airline_symbols.maxlinenr = ''
 " let g:airline_symbols.linenr = ''
 
 " new file set title and turn to endline
-autocmd BufNewFile *.sh,*.py,*.rb exec ":call SetTitle()"
+autocmd BufNewFile *.sh,*.py,*.rb,*.php exec ":call SetTitle()"
 function SetTitle()
     if &filetype == 'sh'
         call setline(1,"\#!/bin/bash")
@@ -535,6 +536,14 @@ function SetTitle()
         call setline(1,"#!/usr/bin/env ruby")
         call append(line("."),"# encoding: utf-8")
 	    call append(line(".")+1, "")
+    elseif &filetype == 'php'
+        call setline(1,"<?php")
+        call append(line("."),"")
+	    call append(line(".")+1, "/**")
+	    call append(line(".")+2, " *")
+	    call append(line(".")+3, " *@author shineGin")
+	    call append(line(".")+4, " *@date ".strftime("%Y-%m-%d"))
+	    call append(line(".")+5, " */")
     endif
 endfunction
 autocmd BufNewFile * normal G
