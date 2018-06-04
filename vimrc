@@ -74,6 +74,7 @@ Plugin 'garbas/vim-snipmate'
 " awesome colorscheme
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 " Git/mercurial/others diff icons on the side of the file lines
 Plugin 'mhinz/vim-signify'
 " Automatically sort python imports
@@ -250,7 +251,8 @@ nmap ,wr :RecurGrepFast <cword><CR>
 " use 256 colors when possible
 if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
 	let &t_Co = 256
-    colorscheme molokai
+    "colorscheme molokai
+    colorscheme gruvbox
 else
     colorscheme delek
 endif
