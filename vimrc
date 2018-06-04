@@ -123,6 +123,8 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
 " Vue.js syntax and highlighting
 Plugin 'tao12345666333/vim-vue'
+" fly grep
+Plugin 'wsdjeg/FlyGrep.vim'
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -586,3 +588,5 @@ let g:instant_markdown_autostart = 0
 
 " format json
 command! JsonFormat :execute '%!python -m json.tool'  
+" fly grep map
+noremap <Space>s :FlyGrep<cr>
