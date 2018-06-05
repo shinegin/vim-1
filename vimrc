@@ -590,3 +590,7 @@ let g:instant_markdown_autostart = 0
 command! JsonFormat :execute '%!python -m json.tool'  
 " fly grep map
 noremap <Space>s :FlyGrep<cr>
+" 将光标跳转到上次打开当前文件的位置
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+            \ execute "normal! g`\"" |
+            \ endif
