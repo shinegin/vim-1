@@ -69,8 +69,9 @@ Plugin 'Shougo/neocomplcache.vim'
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
+"Plugin 'garbas/vim-snipmate'
 " awesome colorscheme
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
@@ -177,6 +178,8 @@ set whichwrap+=<,>,h,l,[,]
 set background=dark
 set encoding=utf-8
 set backspace=2
+" color column
+set colorcolumn=80
 
 " tab length exceptions on some file types
  autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -594,3 +597,13 @@ noremap <Space>s :FlyGrep<cr>
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ execute "normal! g`\"" |
             \ endif
+
+"UltiSnips
+"插入模式下<C-z>触发UltiSnips的代码块补全
+let g:UltiSnipsExpandTrigger="<C-z>"
+"弹出UltiSnips的可用列表
+"let g:UltiSnipsListSnippets="<C-i>"
+""<C-f>跳转的到下一个代码块可编辑区
+let g:UltiSnipsJumpForwardTrigger="<C-f>"
+"<C-b>跳转到上一个代码块可编辑区
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
