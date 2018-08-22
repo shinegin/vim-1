@@ -600,10 +600,14 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 
 "UltiSnips
 "插入模式下<C-z>触发UltiSnips的代码块补全
-let g:UltiSnipsExpandTrigger="<C-z>"
+"let g:UltiSnipsExpandTrigger="<C-z>"
+let g:UltiSnipsExpandTrigger="<S-j>"
 "弹出UltiSnips的可用列表
 "let g:UltiSnipsListSnippets="<C-i>"
 ""<C-f>跳转的到下一个代码块可编辑区
-let g:UltiSnipsJumpForwardTrigger="<C-f>"
+let g:UltiSnipsJumpForwardTrigger="<S-n>"
+"let g:UltiSnipsJumpForwardTrigger="<C-f>"
 "<C-b>跳转到上一个代码块可编辑区
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<S-p>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:snips_author="shineGin"
