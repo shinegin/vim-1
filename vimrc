@@ -34,8 +34,8 @@ Plugin 'gmarik/vundle'
 " Plugin 'fisadev/vim-debug.vim'
 " Better file browser
 Plugin 'scrooloose/nerdtree'
-" Code commenter
-Plugin 'scrooloose/nerdcommenter'
+" Code commenter 快速注释
+" Plugin 'scrooloose/nerdcommenter'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 " Code and files fuzzy finder
@@ -45,7 +45,7 @@ Plugin 'fisadev/vim-ctrlp-cmdpalette'
 " Zen coding
 Plugin 'mattn/emmet-vim'
 " Maybe the best Git integration
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 " Tab list panel
 Plugin 'kien/tabman.vim'
 " Airline
@@ -63,15 +63,17 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 " Better autocompletion
 Plugin 'Shougo/neocomplcache.vim'
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 "Plugin 'garbas/vim-snipmate'
+" colorscheme manage
+Plugin 'flazz/vim-colorschemes'
 " awesome colorscheme
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
@@ -85,6 +87,7 @@ Plugin 'fisadev/dragvisuals.vim'
 " Window chooser
 Plugin 't9md/vim-choosewin'
 " Python and other languages code checker
+" 这个插件很卡
 Plugin 'scrooloose/syntastic'
 " Paint css colors with the real color
 Plugin 'lilydjwg/colorizer'
@@ -98,7 +101,7 @@ Plugin 'lilydjwg/colorizer'
 " Plugins from vim-scripts repos:
 
 " Search results counter
-Plugin 'IndexedSearch'
+" Plugin 'IndexedSearch'
 " XML/HTML tags navigation
 Plugin 'matchit.zip'
 " Gvim colorscheme
@@ -126,6 +129,8 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tao12345666333/vim-vue'
 " fly grep
 Plugin 'wsdjeg/FlyGrep.vim'
+" php xdebug
+Plugin 'vim-vdebug/vdebug'
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -258,6 +263,7 @@ if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
 	let &t_Co = 256
     "colorscheme molokai
     colorscheme gruvbox
+    "colorscheme molokai
 else
     colorscheme delek
 endif
@@ -382,7 +388,12 @@ nmap <leader>e :Errors<CR>
 nmap <leader>n :lnext<CR>
 nmap <leader>p :lprevious<CR>
 " check also when just opened the file
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_write = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>e :SyntasticCheck<CR>
+nnoremap <C-w>E :SyntasticToggleMode<CR>
 " syntastic checker for javascript.
 " eslint is the only tool support JSX.
 " If you don't need write JSX, you can use jshint.
@@ -554,13 +565,13 @@ function SetTitle()
         call append(line("."),"# encoding: utf-8")
 	    call append(line(".")+1, "")
     elseif &filetype == 'php'
-        call setline(1,"<?php")
-        call append(line("."),"")
-	    call append(line(".")+1, "/**")
-	    call append(line(".")+2, " *")
-	    call append(line(".")+3, " *@author shineGin")
-	    call append(line(".")+4, " *@date ".strftime("%Y-%m-%d"))
-	    call append(line(".")+5, " */")
+    "     call setline(1,"<?php")
+    "     call append(line("."),"")
+	"     call append(line(".")+1, "/**")
+	"     call append(line(".")+2, " *")
+	"     call append(line(".")+3, " *@author shineGin")
+	"     call append(line(".")+4, " *@date ".strftime("%Y-%m-%d"))
+	"     call append(line(".")+5, " */")
     endif
 endfunction
 autocmd BufNewFile * normal G
@@ -611,3 +622,18 @@ let g:UltiSnipsJumpForwardTrigger="<S-n>"
 let g:UltiSnipsJumpBackwardTrigger="<S-p>"
 "let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 let g:snips_author="shineGin"
+
+"fold setting 折叠设置--
+" 用缩进来定义折叠
+":set foldmethod=indent
+" 启动vim时不要自动折叠代码
+"set foldlevel=100
+" 设置折叠栏宽度
+"set foldcolumn=1
+
+" ctags
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Use_Right_Window=1
+
